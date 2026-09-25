@@ -1,3 +1,7 @@
+using MinhaApi.Repositories;
+using MinhaApi.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +9,54 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<
+    IProdutoRepository,
+    ProdutoRepository>();
+
+builder.Services.AddScoped<
+    ITipoRepository,
+    TipoRepository>();
+
+builder.Services.AddScoped<
+    IProdutoService,
+    ProdutoService>();
+
+builder.Services.AddScoped<
+    ITipoService,
+    TipoService>();
+
+builder.Services.AddScoped<
+    IClienteService,
+    ClienteService>();
+
+builder.Services.AddScoped<
+    IClienteRepository,
+    ClienteRepository>();
+
+builder.Services.AddScoped<
+    IVendaRepository,
+    VendaRepository>();
+    
+builder.Services.AddScoped<
+    IVendaService,
+    VendaService>();
+
+builder.Services.AddScoped<
+    IFornecedorService,
+    FornecedorService>();
+
+builder.Services.AddScoped<
+    IFornecedorRepository,
+    FornecedorRepository>();
+
+builder.Services.AddScoped<
+    IDepartamentoService,
+    DepartamentoService>();
+
+builder.Services.AddScoped<
+    IDepartamentoRepository,
+    DepartamentoRepository>();
 
 var app = builder.Build();
 
@@ -16,4 +68,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+
 app.Run();
